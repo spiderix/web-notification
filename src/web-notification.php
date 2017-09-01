@@ -21,12 +21,12 @@
 defined( 'ABSPATH' ) or die( 'Not Authorized!' );
 
 // Plugin Defines
-define( "WEB_PAGINATION_FILE", __FILE__ );
-define( "WEB_PAGINATION_DIR", dirname(__FILE__) );
-define( "WEB_PAGINATION_INCLUDE_DIR", dirname(__FILE__) . 'include' );
-define( "WEB_PAGINATION_DIR_BASENAME", plugin_basename( __FILE__ ) );
-define( "WEB_PAGINATION_DIR_PATH", plugin_dir_path( __FILE__ ) );
-define( "WEB_PAGINATION_DIR_URL", plugins_url( null, __FILE__ ) );
+define( "WEB_NOTIFICATION_FILE", __FILE__ );
+define( "WEB_NOTIFICATION_DIR", dirname(__FILE__) );
+define( "WEB_NOTIFICATION_INCLUDE_DIR", dirname(__FILE__) . 'include' );
+define( "WEB_NOTIFICATION_DIR_BASENAME", plugin_basename( __FILE__ ) );
+define( "WEB_NOTIFICATION_DIR_PATH", plugin_dir_path( __FILE__ ) );
+define( "WEB_NOTIFICATION_DIR_URL", plugins_url( null, __FILE__ ) );
 
 // Require the main class file
-require_once( dirname(__FILE__) . '/include/class-main.php' );
+require_once( dirname(__FILE__) . '/include/web-notification-class.php' );

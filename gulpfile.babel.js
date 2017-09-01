@@ -47,6 +47,7 @@ gulp.task('zip', function () {
         .pipe(gulp.dest('build'))
 });
 
+
 gulp.task('default', ['clean', 'php', 'styles', 'scripts'], () => {
     console.log('Generating zip files ....')
     gulp.start('zip');

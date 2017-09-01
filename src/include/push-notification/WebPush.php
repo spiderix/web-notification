@@ -9,7 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Minishlink\WebPush;
+ 
+ namespace Minishlink\WebPush;
+ include_once 'VAPID.php';
+ include_once 'Encryption.php';
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
