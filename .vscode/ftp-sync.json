@@ -1,8 +1,8 @@
 {
-    "remotePath": "",
-    "host": "",
-    "username": "",
-    "password": "",
+    "remotePath": "./domains/web-harmony.pl/public_html/blog/wp-content/plugins",
+    "host": "web-harmony.pl",
+    "username": "spiderix",
+    "password": "Tommy86",
     "port": 21,
     "secure": false,
     "protocol": "ftp",
