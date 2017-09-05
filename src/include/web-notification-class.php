@@ -8,7 +8,7 @@ class Web_Notification {
 
   public function __construct() {
     global $wpdb;
-    $this->table_name = $wpdb->prefix . "notification_sub";
+    $this->table_name = "notification_sub";
 
     // Plugin uninstall hook
     register_uninstall_hook( WEB_NOTIFICATION_FILE, array(__CLASS__, 'plugin_uninstall') );
@@ -264,7 +264,6 @@ class Web_Notification {
 
   function plugin_send($post_id){
     global $wpdb;
-    // {"body": "tekst", "link":"http://www.ujk.edu.pl"}
 
     if($_POST['web-notification_main_options']['autoSend']){
 
@@ -275,23 +274,16 @@ class Web_Notification {
       $link = get_permalink($post_id);
       
       $subs = $wpdb->get_results("SELECT sub FROM ".$this->table_name);
-
       foreach ($subs as $notification) {
         $notification = json_decode($notification->sub);
 
         $fields = array();
-        $fields['data'] = (object)["body"=>$title, "link"=>$link];
-        // if(is_array($notification)){
-        //   $fields['registration_ids'] = $notification;
-        // }else{
-          $fields['to'] = $notification->endpoint;
-        // }
-        //header with content_type api key
+        $fields['notification'] = (object)["title"=>$title, "click_action"=>$link, "icon"=>'images/wlinoz/logo-mdpi.png'];
+        $fields['to'] = $notification;
         $headers = array(
           'Content-Type:application/json',
           'Authorization:key='.$settings['serverKey']
         );
-        //CURL request to route notification to FCM connection server (provided by Google)			
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $settings['notificationURL']);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -304,11 +296,8 @@ class Web_Notification {
         if ($result === FALSE) {
           die('Oops! FCM Send Error: ' . curl_error($ch));
         }
-        var_dump($result);
-        curl_close($ch);
       }
     }
-    exit();
   }
 }
 
